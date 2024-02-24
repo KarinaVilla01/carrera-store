@@ -14,7 +14,7 @@ export default [
         imageSelect: img5,
         name: "Supremo",
         pricePackage: 400,
-        primeMembership: 1000,
+        priceMembership: 1000,
         isSelected: false,
     },
     {
@@ -23,7 +23,7 @@ export default [
         imageSelect: img6,
         name: "Ultra",
         pricePackage: 300,
-        primeMembership: 800,
+        priceMembership: 800,
         isSelected: false,
     },
     {
@@ -32,7 +32,7 @@ export default [
         imageSelect: img7,
         name: "Basico",
         pricePackage: 200,
-        primeMembership: 650,
+        priceMembership: 650,
         isSelected: false,
     },
     {
@@ -41,7 +41,7 @@ export default [
         imageSelect: img8,
         name: "Express",
         pricePackage: 100,
-        primeMembership: 500,
+        priceMembership: 500,
         isSelected: false,
     },
 ]
