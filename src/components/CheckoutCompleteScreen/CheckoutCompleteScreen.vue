@@ -23,6 +23,7 @@
 </script>
 
 <template>
+  <div class="paymentPage">
   <div>
     <img src="../../_assets/logoCarrera.png" alt="">
   </div>
@@ -66,6 +67,7 @@
     </div>
   </div>
   <button @click="toggleCart">ACEPTAR</button>
+  </div>
 </template>
 
 <style scoped>
