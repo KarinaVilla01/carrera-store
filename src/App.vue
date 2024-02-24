@@ -1,55 +1,10 @@
 <script>
-import { ref } from "vue"
-import Resume from "../src/components/Resume.vue"
-import img1 from '../src/_assets/BackSupremo.png'
-import img2 from '../src/_assets/BackExpress.png'
-import img3 from '../src/_assets/BackBasico.png'
-import img4 from '../src/_assets/BackUltra.png'
-import img5 from '../src/_assets/BackSupremoSelect.png'
-import img6 from '../src/_assets/BackUltraSelected.png'
-import img7 from '../src/_assets/BackBasicoSelect.png'
-import img8 from '../src/_assets/BackExpressSelected.png'
+import {ref, toRefs} from "vue"
+import packagesData from "@/constants/packagesData.js";
 
 export default {
   setup() {
-    const packages = ref([
-      {
-        _id: "612abcd1c4ce4c141237a356",
-        image: img1,
-        imageSelect: img5,
-        name: "Supremo",
-        pricePackage: 400,
-        primeMembership: 1000,
-        isSelected: false,
-      },
-      {
-        _id: "612f1c4f30b90803837e7969",
-        image: img4,
-        imageSelect: img6,
-        name: "Ultra",
-        pricePackage: 300,
-        primeMembership: 800,
-        isSelected: false,
-      },
-      {
-        _id: "612f067387e473107fda56b0",
-        image: img3,
-        imageSelect: img7,
-        name: "Basico",
-        pricePackage: 200,
-        primeMembership: 650,
-        isSelected: false,
-      },
-      {
-        _id: "612f057787e473107fda56aa",
-        image: img2,
-        imageSelect: img8,
-        name: "Express",
-        pricePackage: 100,
-        primeMembership: 500,
-        isSelected: false,
-      },
-    ]);
+    const packages = ref(packagesData);
     const showCart = ref(false);
     const options = ref([
       { id: 1, imgSrc: 'src/_assets/packageIco.png', value: 'Paquete', label: 'Paquete' },
