@@ -8,6 +8,7 @@ import routingStateEnum from "@/constants/routingStateEnum.js";
 import ShoppingCartHeader from "@/components/ShoppingCartHeader.vue";
 import SelectionScreen from "@/components/SelectionScreen/SelectionScreen.vue";
 import MembershipWarningScreen from "@/components/MembershipWarningScreen/MembershipWarningScreen.vue";
+import packageTypeEnum from "@/constants/packageTypeEnum.js";
 
 export default {
   computed: {
@@ -40,23 +41,29 @@ export default {
       }
       isMainDrawerActive.value = !isMainDrawerActive.value;
     }
-    function setRouterStatus(route){
-      routerStatus.value=route
-    }
 
-    // Weird CSS fix
-    const allwaysSelect = ref("option1");
-    const allwaysSelect2 = ref("option2");
+    function moveForward(){
+      switch (routerStatus.value){
+        case routingStateEnum.selectingOrder:
+          if(selectedOrderType.value===packageTypeEnum.membresia){
+            routerStatus.value=routingStateEnum.membershipWarning
+          }else{
+            routerStatus.value=routingStateEnum.paymentSuccess
+          }
+          break;
+        case routingStateEnum.membershipWarning:
+          routerStatus.value=routingStateEnum.paymentSuccess
+      }
+    }
 
     return {
       isMainDrawerActive,
       selectedOrderType,
       selectedPackage,
-      allwaysSelect,
-      allwaysSelect2,
       routerStatus,
       resetCounter,
       toggleMainDrawer,
+      moveForward
     };
   },
 
@@ -73,16 +80,23 @@ export default {
           @on-order-type-change="(value)=>selectedOrderType=value"
           @on-package-change="(value)=>selectedPackage=value"
       />
-      <MembershipWarningScreen v-if="routerStatus===routingStateEnum.membershipWarning"/>
-      <CheckoutCompleteScreen v-if="routerStatus === routingStateEnum.paymentSuccess" :selected-order-type="selectedOrderType" :selected-package="selectedPackage"/>
+      <MembershipWarningScreen
+          v-if="routerStatus===routingStateEnum.membershipWarning"
+          @move-forward="moveForward"
+      />
+      <CheckoutCompleteScreen
+          v-if="routerStatus === routingStateEnum.paymentSuccess"
+          :selected-order-type="selectedOrderType || null"
+          :selected-package="selectedPackage || null"
+          @close="toggleMainDrawer"
+      />
       <!--End of the routing-->
-
-      {{selectedOrderType}}
-      {{selectedPackage}}
       <SubtotalAndConfirm
-          v-show="routerStatus!==routingStateEnum.membershipWarning && routerStatus!==routingStateEnum.paymentSuccess"
-          :selected-order-type="selectedOrderType"
-          :selected-package="selectedPackage"
+          v-show="routerStatus!==routingStateEnum.paymentSuccess && routerStatus!==routingStateEnum.paymentFail"
+          :selected-order-type="selectedOrderType || null"
+          :selected-package="selectedPackage || null"
+          :router-status="routerStatus"
+          @move-forward="moveForward"
       />
 
     </div>

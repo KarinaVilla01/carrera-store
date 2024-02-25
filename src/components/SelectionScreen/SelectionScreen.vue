@@ -25,10 +25,11 @@ function onPackageChange(_selectedPackage){
     <div v-if="selectedOrderType">
       <PackageSelector v-model="selectedPackage" :selected-order-type="selectedOrderType"/>
     </div>
-    <p v-if="selectedOrderType === packageTypeEnum.membresia" class="parra">
-      Tu <span>membresía</span> se renovará mensualmente de forma
-      atomática.</p>
+<!--    <p v-if="selectedOrderType === packageTypeEnum.membresia" class="parra">-->
+<!--      Tu <span>membresía</span> se renovará mensualmente de forma-->
+<!--      atomática.</p>-->
   </div>
+
 </template>
 
 <style scoped>

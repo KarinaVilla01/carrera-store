@@ -8,8 +8,8 @@ function messageTop(){
     case routingStateEnum.membershipWarning:
       return "ATENCIÓN"
     case routingStateEnum.selectingOrder:
-    case routingStateEnum.membershipFillingDetails:
-    case routingStateEnum.packageFillingDetails:
+    case routingStateEnum.membershipForm:
+    case routingStateEnum.packageForm:
       return "CARRITO DE COMPRA"
     default:
       return ""

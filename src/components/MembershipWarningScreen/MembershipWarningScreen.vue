@@ -12,7 +12,7 @@ function authorizePaument(){
       <p>Al aceptar, estás de acuerdo con un <span>cargo recurrente mensual</span>
         y deberás firmar en ventanilla durante tu primera visita.</p>
     </div>
-    <button @click="autorizePayment">ACEPTO</button>
+    <button @click="$emit('moveForward')">ACEPTO</button>
   </div>
 </template>
 

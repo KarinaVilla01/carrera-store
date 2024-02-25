@@ -2,7 +2,7 @@
   import packageTypeEnum from "@/constants/packageTypeEnum.js";
   import {membreshipIcon, packageIcon} from "@/constants/imageLocations.js";
 
-  const props = defineProps(['selectedOrderType, selectedPackage'])
+  const props = defineProps(['selectedOrderType', 'selectedPackage'])
 
   function optionImageSrc(){
     if(props.selectedOrderType === packageTypeEnum.membresia) {
@@ -66,7 +66,7 @@
       <h4>TOTAL: <span>${{ calculateTotal() }}.00</span></h4>
     </div>
   </div>
-  <button @click="toggleCart">ACEPTAR</button>
+  <button @click="$emit('close')">TERMINAR</button>
   </div>
 </template>
 
