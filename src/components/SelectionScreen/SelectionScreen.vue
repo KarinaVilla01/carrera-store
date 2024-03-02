@@ -1,7 +1,6 @@
 <script setup>
 import PackageSelector from "@/components/SelectionScreen/PackageSelector.vue";
 import OrderTypeSelector from "@/components/SelectionScreen/OrderTypeSelector.vue";
-import packageTypeEnum from "@/constants/packageTypeEnum.js";
 import {ref, watch} from "vue";
 
 const selectedOrderType=ref(null);
@@ -25,9 +24,6 @@ function onPackageChange(_selectedPackage){
     <div v-if="selectedOrderType">
       <PackageSelector v-model="selectedPackage" :selected-order-type="selectedOrderType"/>
     </div>
-<!--    <p v-if="selectedOrderType === packageTypeEnum.membresia" class="parra">-->
-<!--      Tu <span>membresía</span> se renovará mensualmente de forma-->
-<!--      atomática.</p>-->
   </div>
 
 </template>

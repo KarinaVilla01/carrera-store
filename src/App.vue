@@ -9,6 +9,8 @@ import ShoppingCartHeader from "@/components/ShoppingCartHeader.vue";
 import SelectionScreen from "@/components/SelectionScreen/SelectionScreen.vue";
 import MembershipWarningScreen from "@/components/MembershipWarningScreen/MembershipWarningScreen.vue";
 import packageTypeEnum from "@/constants/packageTypeEnum.js";
+import MembershipFormScreen from "@/components/ClientDataFormScreen/ClientDataFormScreen.vue";
+import CheckoutScreen from "@/components/CheckoutScreen/CheckoutScreen.vue";
 
 export default {
   computed: {
@@ -17,6 +19,8 @@ export default {
     },
   },
   components: {
+    CheckoutScreen,
+    MembershipFormScreen,
     MembershipWarningScreen,
     SelectionScreen,
     ShoppingCartHeader, SubtotalAndConfirm, PackageSelector, CheckoutCompleteScreen, OrderTypeSelector},
@@ -25,6 +29,7 @@ export default {
     //User selections
     const selectedOrderType = ref(null);
     const selectedPackage = ref(null)
+    const clientData=ref({})
 
     const resetCounter=ref(0)
 
@@ -52,6 +57,12 @@ export default {
           }
           break;
         case routingStateEnum.membershipWarning:
+          routerStatus.value=routingStateEnum.clientDataForm
+          break;
+        case routingStateEnum.clientDataForm:
+          routerStatus.value=routingStateEnum.checkout
+          break;
+        case routingStateEnum.checkout:
           routerStatus.value=routingStateEnum.paymentSuccess
       }
     }
@@ -62,6 +73,7 @@ export default {
       selectedPackage,
       routerStatus,
       resetCounter,
+      clientData,
       toggleMainDrawer,
       moveForward
     };
@@ -84,6 +96,14 @@ export default {
           v-if="routerStatus===routingStateEnum.membershipWarning"
           @move-forward="moveForward"
       />
+      <MembershipFormScreen
+          v-if="routerStatus===routingStateEnum.clientDataForm"
+          v-model="clientData"
+      />
+      <CheckoutScreen
+          v-if="routerStatus===routingStateEnum.checkout"
+          @move-forward="moveForward"
+      />
       <CheckoutCompleteScreen
           v-if="routerStatus === routingStateEnum.paymentSuccess"
           :selected-order-type="selectedOrderType || null"
@@ -98,7 +118,7 @@ export default {
           :router-status="routerStatus"
           @move-forward="moveForward"
       />
-
+{{clientData}}
     </div>
     <div id="button-create">
       <button id="buy" @click="toggleMainDrawer">Comprar</button>

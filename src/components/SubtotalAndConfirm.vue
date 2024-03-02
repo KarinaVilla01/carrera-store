@@ -38,6 +38,8 @@ function updateShowWarning(){
     <button v-if=" props.routerStatus === routingStateEnum.selectingOrder"
             :disabled="!props.selectedOrderType || !props.selectedPackage"
             @click="$emit('moveForward')">Confirmar pedido</button>
+    <button v-if="props.routerStatus === routingStateEnum.clientDataForm"
+            @click="$emit('moveForward')">Confirmar datos</button>
 
   </div>
 </template>

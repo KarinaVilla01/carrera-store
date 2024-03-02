@@ -1,7 +1,4 @@
 <script setup>
-function authorizePaument(){
-  console.log("next")
-}
 </script>
 
 <template>
