@@ -3,6 +3,7 @@
   --basic-color: #0166FF;
   --accent-color: #069fe6;
   --light-gray: rgba(0, 0, 0, 0.1);
+  --placeholder-color: rgba(0,0,0,0.3);
   --dark-gray: #6e5c54;
   --yllw: #E8BC0E;
 }
@@ -178,16 +179,17 @@ ul>li:nth-child(4)>a>div {
   box-shadow: 0 -5px 10px var(--light-gray);
 }
 
-.paymentPage{
+.paymentPage {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.checkOut > button:disabled{
-  background-color: var(--light-gray)!important;
+
+.checkOut>button:disabled {
+  background-color: var(--light-gray) !important;
 }
 
-.paymentPage button{
+.paymentPage button {
   width: 80%;
   border: none;
   background-color: var(--basic-color);
@@ -207,32 +209,32 @@ ul>li:nth-child(4)>a>div {
   width: 200px;
 }
 
-.paymentPage div:nth-child(1) img{
-    margin: 50px 0 15px;
-    width: 300px;
+.paymentPage div:nth-child(1) img {
+  margin: 50px 0 15px;
+  width: 300px;
 }
 
-.paymentPage h1{
+.paymentPage h1 {
   font-size: 3rem;
   font-weight: 800;
 }
 
-.paymentPage h4{
+.paymentPage h4 {
   color: var(--basic-color);
   font-size: 1.3rem;
   margin-top: 0;
   line-height: 5px;
 }
 
-.card-payment{
+.card-payment {
   width: 80%;
-    background: #F7FBFE;
-    border-radius: 10px;
-    margin: 0px 0px;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
+  background: #F7FBFE;
+  border-radius: 10px;
+  margin: 0px 0px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.card-payment h4{
+.card-payment h4 {
   color: black;
   font-weight: 400;
   margin-bottom: 0;
@@ -240,43 +242,43 @@ ul>li:nth-child(4)>a>div {
 }
 
 .intoCardPayment,
-.seccion1{
+.seccion1 {
   display: flex;
   align-items: center;
   padding: 10px 15px;
 }
 
-.total{
+.total {
   text-align: end;
   padding: 15px;
 }
 
-.total h4{
+.total h4 {
   line-height: 2rem;
   font-size: 1.5rem;
 }
 
-.total span{
+.total span {
   font-weight: 800;
 }
 
-.seccion1{
+.seccion1 {
   justify-content: space-between;
 }
 
-.seccion1 p{
+.seccion1 p {
   margin-top: 0;
 }
 
-.flagsImg{
-  width: 70px!important;
+.flagsImg {
+  width: 70px !important;
 }
 
-#app > main > div.cart-price.active > div > div.card-payment > div.seccion1 > div > h4{
+#app>main>div.cart-price.active>div>div.card-payment>div.seccion1>div>h4 {
   margin-bottom: 15px;
 }
 
-.card-payment > div{
+.card-payment>div {
   border-bottom: 2px solid var(--bg-color);
 }
 
@@ -491,6 +493,28 @@ ul>li.selectedOption:nth-child(4) {
   height: 7rem;
 }
 
+.icon-input-center {
+  position: relative;
+}
+
+.icon-input-center i {
+  position: absolute;
+  top: 30%;
+  left: 10px;
+}
+
+::placeholder{
+  color:var(--placeholder-color);
+}
+
+.card-input h2{
+  font-size: 1em;
+  margin-top: 0!important;
+}
+
+.card-input label{
+  margin-top: 15px;
+}
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
 
 body {
@@ -535,8 +559,8 @@ body {
 .card-form__inner {
   background: #fff;
   border-radius: 10px;
-  padding: 35px 35px 0 35px;
-  margin: 160px 20px 0 20px;
+  padding: 35px;
+  margin: 20px;
   color: rgb(131, 141, 141);
 }
 
@@ -1225,11 +1249,16 @@ body {
   box-shadow: 0px 10px 20px -13px rgba(32, 56, 117, 0.35);
 }
 
+.error-message {
+  color: red;
+  font-size: 0.8em;
+}
+
 .card-input__input.-select {
   -webkit-appearance: none;
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAeCAYAAABuUU38AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUxJREFUeNrM1sEJwkAQBdCsngXPHsQO9O5FS7AAMVYgdqAd2IGCDWgFnryLFQiCZ8EGnJUNimiyM/tnk4HNEAg/8y6ZmMRVqz9eUJvRaSbvutCZ347bXVJy/ZnvTmdJ862Me+hAbZCTs6GHpyUi1tTSvPnqTpoWZPUa7W7ncT3vK4h4zVejy8QzM3WhVUO8ykI6jOxoGA4ig3BLHcNFSCGqGAkig2yqgpEiMsjSfY9LxYQg7L6r0X6wS29YJiYQYecemY+wHrXD1+bklGhpAhBDeu/JfIVGxaAQ9sb8CI+CQSJ+QmJg0Ii/EE2MBiIXooHRQhRCkBhNhBcEhLkwf05ZCG8ICCOpk0MULmvDSY2M8UawIRExLIQIEgHDRoghihgRIgiigBEjgiFATBACAgFgghEwSAAGgoBCBBgYAg5hYKAIFYgHBo6w9RRgAFfy160QuV8NAAAAAElFTkSuQmCC");
   background-size: 12px;
-  background-position: 90% center;
+  background-position: 95% center;
   background-repeat: no-repeat;
   padding-right: 30px;
 }
