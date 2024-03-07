@@ -5,7 +5,7 @@
   --basic-color: #0166FF;
   --accent-color: #069fe6;
   --light-gray: rgba(0, 0, 0, 0.1);
-  --placeholder-color: rgba(0,0,0,0.3);
+  --placeholder-color: rgba(0, 0, 0, 0.3);
   --dark-gray: #6e5c54;
   --yllw: #E8BC0E;
 }
@@ -208,12 +208,12 @@ ul>li:nth-child(4)>a>div {
 }
 
 .paymentPage img {
-  width: 200px;
+  width: 180px;
 }
 
 .paymentPage div:nth-child(1) img {
   margin: 50px 0 15px;
-  width: 300px;
+  width: 200px;
 }
 
 .paymentPage h1 {
@@ -273,7 +273,7 @@ ul>li:nth-child(4)>a>div {
 }
 
 .flagsImg {
-  width: 70px !important;
+  width: 50px !important;
 }
 
 #app>main>div.cart-price.active>div>div.card-payment>div.seccion1>div>h4 {
@@ -507,18 +507,19 @@ ul>li.selectedOption:nth-child(4) {
   left: 10px;
 }
 
-::placeholder{
-  color:var(--placeholder-color);
+::placeholder {
+  color: var(--placeholder-color);
 }
 
-.card-input h2{
+.card-input h2 {
   font-size: 1em;
-  margin-top: 0!important;
+  margin-top: 0 !important;
 }
 
-.card-input label{
+.card-input label {
   margin-top: 15px;
 }
+
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
 
 body {
@@ -1337,7 +1338,110 @@ body {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 991px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+  }
+
+  h5,
+  p {
+    font-size: 0.7rem;
+  }
+
+  .checkOut .subtotal p:nth-child(2) {
+    font-size: 1.2rem;
+  }
+
+  .terminos p {
+    font-size: 10px;
+  }
+
+  .checkOut {
+    padding: 1rem;
+  }
+
+  .checkOut button,
+  .popUp button,
+  .paymentPage button {
+    padding: 0.8rem 10px;
+    font-size: 0.8rem;
+  }
+
+  .paymentPage button{
+    margin-top: 1rem;
+  }
+
+  .card-form__inner {
+    padding-top: 5px;
+  }
+
+  .checkOut .subtotal p:nth-child(1) {
+    font-size: 1rem;
+  }
+
+  .listCartInto li:nth-child(1) {
+    height: 4rem;
+  }
+
+  .card-form__inner {
+    background-color: var(--bg-color);
+    margin: 0;
+  }
+
+  .card-input__input {
+    width: 100%;
+    height: 30px;
+  }
+
+  .card-form__inner{
+    color: black
+  }
+
+  .listCartInto li:nth-child(2) {
+    height: 3rem;
+  }
+
+  .listCartInto li:nth-child(3) {
+    height: 2.8rem;
+  }
+
+  .listCartInto li:nth-child(4) {
+    height: 2.5rem;
+  }
+
+  ul>li:nth-child(1)>a>div {
+    font-size: 1.5rem;
+  }
+
+  ul>li:nth-child(2)>a>div {
+    font-size: 1.3rem;
+  }
+
+  ul>li:nth-child(3)>a>div {
+    font-size: 1.1rem;
+  }
+
+  ul>li:nth-child(4)>a>div {
+    font-size: 1rem;
+  }
+
+  #app>main>div.cart-price.active>div.listCart>div:nth-child(4)>h4 {
+    margin-top: 5px;
+  }
+
+  .popUp div {
+    padding: 10px;
+    margin: 20px 20px;
+  }
+
+  .popUp i {
+    font-size: 3rem;
+  }
+
   .github-btn {
     position: relative;
     bottom: auto;
@@ -1349,7 +1453,49 @@ body {
     transform: scale(1.1);
     box-shadow: 0px 17px 20px -6px rgba(36, 52, 70, 0.36);
   }
+
+  .cart-price.active {
+    left: 0%;
+    width: 100%;
+  }
+
+  .cart-header {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    height: 1rem;
+  }
+
+  .cart-header i {
+    font-size: 25px;
+  }
+
+  .paymentPage div:nth-child(1) img {
+    margin: 20px 0 15px;
+    width: 150px;
 }
+
+.paymentPage img {
+  width: 150px;
+}
+
+.paymentPage h1 {
+  font-size: 2rem;
+}
+
+#app > main > div.cart-price.active > div.paymentPage > h4{
+  margin-top: -10px;
+  font-size: 1rem;
+}
+
+.card-payment h4 {
+  font-size: 1rem;
+} 
+
+.total {
+  padding: 5px 15px;
+}
+}
+
 
 @media (hover: hover) {
   a:hover {
@@ -1369,3 +1515,8 @@ body {
     padding: 0 2rem;
   }
 }
+<<<<<<< HEAD
+
+@media (max-width: 991) {}
+=======
+>>>>>>> 282277ecf7ae39dd6f27dcace51188a824a27e1d

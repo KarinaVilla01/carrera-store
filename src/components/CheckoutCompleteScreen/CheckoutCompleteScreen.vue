@@ -25,7 +25,7 @@
 <template>
   <div class="paymentPage">
   <div>
-    <img src="../../_assets/logoCarrera.png" alt="">
+    <img src="../../_assets/Carrera.png" alt="">
   </div>
   <div>
     <img src="../../_assets/Confirmation Ico.png" alt="">
