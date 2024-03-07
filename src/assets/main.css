@@ -30,6 +30,13 @@
   justify-content: space-around;
 }
 
+.loader-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
 .listCart h5,
 .listCart h4 {
   font-weight: 400;
@@ -187,7 +194,8 @@ ul>li:nth-child(4)>a>div {
   align-items: center;
 }
 
-.checkOut>button:disabled , #submit:disabled{
+.checkOut>button:disabled,
+#submit:disabled {
   background-color: var(--light-gray) !important;
 }
 
@@ -334,7 +342,7 @@ div.textConfirmate>h4:nth-child(6) {
 }
 
 .checkOut button:nth-of-type(2),
-#submit{
+#submit {
   background-color: var(--accent-color);
 }
 
@@ -1371,7 +1379,7 @@ body {
     font-size: 0.8rem;
   }
 
-  .paymentPage button{
+  .paymentPage button {
     margin-top: 1rem;
   }
 
@@ -1397,7 +1405,7 @@ body {
     height: 30px;
   }
 
-  .card-form__inner{
+  .card-form__inner {
     color: black
   }
 
@@ -1472,28 +1480,28 @@ body {
   .paymentPage div:nth-child(1) img {
     margin: 20px 0 15px;
     width: 150px;
-}
+  }
 
-.paymentPage img {
-  width: 150px;
-}
+  .paymentPage img {
+    width: 150px;
+  }
 
-.paymentPage h1 {
-  font-size: 2rem;
-}
+  .paymentPage h1 {
+    font-size: 2rem;
+  }
 
-#app > main > div.cart-price.active > div.paymentPage > h4{
-  margin-top: -10px;
-  font-size: 1rem;
-}
+  #app>main>div.cart-price.active>div.paymentPage>h4 {
+    margin-top: -10px;
+    font-size: 1rem;
+  }
 
-.card-payment h4 {
-  font-size: 1rem;
-} 
+  .card-payment h4 {
+    font-size: 1rem;
+  }
 
-.total {
-  padding: 5px 15px;
-}
+  .total {
+    padding: 5px 15px;
+  }
 }
 
 

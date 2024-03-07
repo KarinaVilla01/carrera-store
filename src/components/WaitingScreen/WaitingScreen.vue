@@ -9,7 +9,9 @@ setInterval(fetchData, 5000)
 </script>
 
 <template>
-  <span class="loader"></span>
+  <div class="loader-center">
+    <span class="loader"></span>
+  </div>
 </template>
 
 <style scoped>
