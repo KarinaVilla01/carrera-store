@@ -57,9 +57,9 @@ function submitItem(evt){
       <input name="medio_pago" id="medio_pago" type="hidden" :value="props.clientData.paymentType"/>
       <input name="msi_val" id="msi_val" type="hidden" value="0"/>
       <input name="nom" id="nom" type="hidden" :value="`${props.clientData.firstName} ${props.clientData.lastName}`"/>
-      <input name="con" id="con" type="hidden" :value="`${props.orderType === packageTypeEnum.paquete?'Paquete':'Membresia'} ${props.selectedPackage.name}`"/>
+      <input name="con" id="con" type="hidden" :value="`${props.selectedOrderType === packageTypeEnum.paquete?'Paquete':'Membresia'} ${props.selectedPackage.name}`"/>
       <input name="ref" id="ref" type="hidden" :value="randomRef"/>
-      <input name="imp" id="imp" type="hidden" :value="props.orderType === packageTypeEnum.paquete? props.selectedPackage.pricePackage:props.selectedPackage.priceMembership"/>
+      <input name="imp" id="imp" type="hidden" :value="props.selectedOrderType === packageTypeEnum.paquete? props.selectedPackage.pricePackage:props.selectedPackage.priceMembership"/>
       <input name="ema" id="ema" type="hidden" :value="props.clientData.email"/>
       <input name="urlok" id="urlOk" type="hidden" value="https://google.com"/>
       <input name="urlko" id="urlKo" type="hidden" value="https://youtube.com"/>

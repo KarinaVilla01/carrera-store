@@ -29,7 +29,7 @@ export default {
   setup() {
 
     function uuidv4() {
-      return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+      return "10000000100040008000100000000000".replace(/[018]/g, c =>
           (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
       );
     }
@@ -131,13 +131,14 @@ export default {
       <!--End of the routing-->
       <SubtotalAndConfirm
           v-show="routerStatus!==routingStateEnum.paymentSuccess && routerStatus!==routingStateEnum.paymentFail"
-          :selected-order-type="selectedOrderType || null"
+          :selected-order-type="selectedOrderType"
           :selected-package="selectedPackage || null"
           :client-data="clientData"
           :router-status="routerStatus"
           :random-ref="randomRef"
           @move-forward="moveForward"
       />
+      {{selectedOrderType}}
     </div>
     <div id="button-create">
       <button id="buy" @click="toggleMainDrawer">Comprar</button>
