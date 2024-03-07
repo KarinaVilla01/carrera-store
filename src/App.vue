@@ -1,5 +1,5 @@
 <script>
-import {ref, toRefs} from "vue"
+import {ref} from "vue"
 import OrderTypeSelector from "@/components/SelectionScreen/OrderTypeSelector.vue";
 import CheckoutCompleteScreen from "@/components/CheckoutCompleteScreen/CheckoutCompleteScreen.vue";
 import PackageSelector from "@/components/SelectionScreen/PackageSelector.vue";
@@ -11,6 +11,7 @@ import MembershipWarningScreen from "@/components/MembershipWarningScreen/Member
 import packageTypeEnum from "@/constants/packageTypeEnum.js";
 import MembershipFormScreen from "@/components/ClientDataFormScreen/ClientDataFormScreen.vue";
 import CheckoutScreen from "@/components/CheckoutScreen/CheckoutScreen.vue";
+import WaitingScreen from "@/components/WaitingScreen/WaitingScreen.vue";
 
 export default {
   computed: {
@@ -19,6 +20,7 @@ export default {
     },
   },
   components: {
+    WaitingScreen,
     CheckoutScreen,
     MembershipFormScreen,
     MembershipWarningScreen,
@@ -26,12 +28,21 @@ export default {
     ShoppingCartHeader, SubtotalAndConfirm, PackageSelector, CheckoutCompleteScreen, OrderTypeSelector},
   setup() {
 
+    function uuidv4() {
+      return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+          (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+    }
+
     //User selections
     const selectedOrderType = ref(null);
     const selectedPackage = ref(null)
     const clientData=ref({})
+    const randomRef=ref(uuidv4())
 
     const resetCounter=ref(0)
+
+
 
     // State of the app
     const isMainDrawerActive = ref(false);
@@ -41,6 +52,7 @@ export default {
         selectedPackage.value=null
         selectedOrderType.value=null
         clientData.value={}
+        randomRef.value=uuidv4()
 
         routerStatus.value=routingStateEnum.selectingOrder
         resetCounter.value++
@@ -61,9 +73,9 @@ export default {
           routerStatus.value=routingStateEnum.clientDataForm
           break;
         case routingStateEnum.clientDataForm:
-          routerStatus.value=routingStateEnum.checkout
+          routerStatus.value=routingStateEnum.waitingOnPayment
           break;
-        case routingStateEnum.checkout:
+        case routingStateEnum.waitingOnPayment:
           routerStatus.value=routingStateEnum.paymentSuccess
       }
     }
@@ -76,7 +88,8 @@ export default {
       resetCounter,
       clientData,
       toggleMainDrawer,
-      moveForward
+      moveForward,
+      randomRef
     };
   },
 
@@ -100,6 +113,10 @@ export default {
       <MembershipFormScreen
           v-if="routerStatus===routingStateEnum.clientDataForm"
           v-model="clientData"
+          @move-forward="moveForward"
+      />
+      <WaitingScreen
+        v-if="routerStatus===routingStateEnum.waitingOnPayment"
       />
       <CheckoutScreen
           v-if="routerStatus===routingStateEnum.checkout"
@@ -118,6 +135,7 @@ export default {
           :selected-package="selectedPackage || null"
           :client-data="clientData"
           :router-status="routerStatus"
+          :random-ref="randomRef"
           @move-forward="moveForward"
       />
     </div>

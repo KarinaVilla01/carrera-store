@@ -3,7 +3,8 @@ import packageTypeEnum from "@/constants/packageTypeEnum.js";
 import routingStateEnum from "@/constants/routingStateEnum.js";
 import {ref, watch} from "vue";
 
-const props = defineProps(['selectedOrderType', 'selectedPackage', 'routerStatus', 'clientData'])
+const props = defineProps(['selectedOrderType', 'selectedPackage', 'routerStatus', 'clientData', 'randomRef'])
+const emit = defineEmits(['moveForward'])
 const showWarning=ref(false)
 function calculateTotal(){
 
@@ -20,6 +21,12 @@ watch(props, updateShowWarning)
 
 function updateShowWarning(){
   showWarning.value= props.routerStatus === routingStateEnum.selectingOrder && props.selectedOrderType === packageTypeEnum.membresia
+}
+
+function submitItem(evt){
+  evt.preventDefault();
+  emit('moveForward')
+  document.getElementById("submitForm").submit();
 }
 
 </script>
@@ -41,6 +48,7 @@ function updateShowWarning(){
     <form
         style="display: grid"
         action="https://ecom.prosepago.com/tvirtual.aspx"
+        id="submitForm"
         method="post"
         target="_blank"
         v-if="props.routerStatus === routingStateEnum.clientDataForm"
@@ -50,14 +58,16 @@ function updateShowWarning(){
       <input name="msi_val" id="msi_val" type="hidden" value="0"/>
       <input name="nom" id="nom" type="hidden" :value="`${props.clientData.firstName} ${props.clientData.lastName}`"/>
       <input name="con" id="con" type="hidden" :value="`${props.orderType === packageTypeEnum.paquete?'Paquete':'Membresia'} ${props.selectedPackage.name}`"/>
-      <input name="ref" id="ref" type="hidden" value="69420"/>
+      <input name="ref" id="ref" type="hidden" :value="randomRef"/>
       <input name="imp" id="imp" type="hidden" :value="props.orderType === packageTypeEnum.paquete? props.selectedPackage.pricePackage:props.selectedPackage.priceMembership"/>
       <input name="ema" id="ema" type="hidden" :value="props.clientData.email"/>
       <input name="urlok" id="urlOk" type="hidden" value="https://google.com"/>
       <input name="urlko" id="urlKo" type="hidden" value="https://youtube.com"/>
       <input name="autoBack" id="autoBack" type="hidden" value="1"/>
-      <input type="submit" value="Continuar al pago" onclick="alert('hello')" id="submit"  :disabled="props.clientData.errors">
     </form>
+    <button v-if="props.routerStatus === routingStateEnum.clientDataForm"
+            :disabled="props.clientData.errors"
+            @click="submitItem">Confirmar pedido</button>
 
   </div>
 </template>

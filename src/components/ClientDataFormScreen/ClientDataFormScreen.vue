@@ -11,11 +11,9 @@ const phone = ref("")
 const errors=ref([])
 
 function updateData(){
-  clientData.value={paymentType, location, firstName, lastName, email, phone, errors: !err}
-}
-function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email);
+  const phoneRegex = /^\d{10}$/;
+  errors.value=firstName.value && lastName.value && validateEmail(email.value) &&phoneRegex.test(phone.value)
+  clientData.value={paymentType, location, firstName, lastName, email, phone, errors:!errors.value}
 }
 // Mensajes de error
 const firstNameError = ref('');
@@ -26,6 +24,7 @@ const phoneError = ref('');
 const validateEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
+
 
 watch(paymentType, updateData)
 watch(location, updateData)
@@ -72,15 +71,13 @@ updateData()
       <label class="card-input__label">Nombre</label>
       <div class="input-container">
         <i class="fa fa-user"></i>
-        <input v-model="firstName" type="text" class="card-input__input" placeholder="Javier"
-          @blur="validateFirstName">
+        <input v-model="firstName" type="text" class="card-input__input" placeholder="Javier">
         </div>
         <div v-if="firstNameError" class="error">{{ firstNameError }}</div>
       <label class="card-input__label">Apellido</label>
       <div class="input-container">
         <i class="fa-regular fa-user"></i>
-        <input v-model="lastName" type="text" class="card-input__input" placeholder="López Martínez"
-          @blur="validateLastName">
+        <input v-model="lastName" type="text" class="card-input__input" placeholder="López Martínez">
         </div>
         <div v-if="lastNameError" class="error">{{ lastNameError }}</div>
       <label class="card-input__label">Correo</label>
@@ -93,8 +90,7 @@ updateData()
       <label class="card-input__label">Telefono</label>
       <div class="input-container">
         <i class="fa-solid fa-phone"></i>
-        <input v-model="phone" type="text" maxlength="10" class="card-input__input" placeholder="55 123456789"
-          @blur="validatePhone">
+        <input v-model="phone" type="text" maxlength="10" class="card-input__input" placeholder="55 123456789">
         </div>
         <div v-if="phoneError" class="error">{{ phoneError }}</div>
     </div>
