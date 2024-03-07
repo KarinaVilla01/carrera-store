@@ -9,12 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vuelidate/core": "^2.0.3",
-    "primevue": "^3.46.0",
-    "vee-validate": "^4.5.8",
-    "vue": "^3.3.11",
-    "vue-masked-input": "^0.5.2",
-    "vue-the-mask": "^0.11.1"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",

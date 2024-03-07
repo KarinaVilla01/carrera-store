@@ -8,7 +8,15 @@ const firstName = ref("")
 const lastName = ref("")
 const email = ref("")
 const phone = ref("")
+const errors=ref([])
 
+function updateData(){
+  clientData.value={paymentType, location, firstName, lastName, email, phone, errors: !err}
+}
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
 // Mensajes de error
 const firstNameError = ref('');
 const lastNameError = ref('');
@@ -19,29 +27,26 @@ const validateEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-watch(paymentType, () => {
-  clientData.value = { ...clientData.value, paymentType }
-})
-watch(location, () => {
-  clientData.value = { ...clientData.value, location }
-})
+watch(paymentType, updateData)
+watch(location, updateData)
 watch(firstName, (newValue) => {
-  clientData.value = { ...clientData.value, firsNme: firstName }
+  updateData()
   firstNameError.value = newValue ? '' : 'El nombre es requerido';
 })
 watch(lastName, (newValue) => {
-  clientData.value = { ...clientData.value, lastName }
+  updateData()
   lastNameError.value = newValue ? '' : 'El apellido es requerido';
 })
 watch(email, (newValue) => {
-  clientData.value = { ...clientData.value, email }
+  updateData()
   emailError.value = validateEmail(newValue) ? '' : 'El correo no es válido';
 })
 watch(phone, (newValue) => {
-  clientData.value = { ...clientData.value, phone }
+  updateData()
   const regex = /^\d{10}$/;
   phoneError.value = regex.test(newValue) ? '' : 'El teléfono debe tener 10 dígitos';
 })
+updateData()
 </script>
 
 <template>
