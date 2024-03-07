@@ -19,40 +19,28 @@ const validateEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
-watch(firstName, (newValue) => {
-  firstNameError.value = newValue ? '' : 'El nombre es requerido';
-});
-
-watch(lastName, (newValue) => {
-  lastNameError.value = newValue ? '' : 'El apellido es requerido';
-});
-
-watch(email, (newValue) => {
-  emailError.value = validateEmail(newValue) ? '' : 'El correo no es válido';
-});
-
-watch(phone, (newValue) => {
-  const regex = /^\d{10}$/;
-  phoneError.value = regex.test(newValue) ? '' : 'El teléfono debe tener 10 dígitos';
-});
-
 watch(paymentType, () => {
   clientData.value = { ...clientData.value, paymentType }
 })
 watch(location, () => {
   clientData.value = { ...clientData.value, location }
 })
-watch(firstName, () => {
+watch(firstName, (newValue) => {
   clientData.value = { ...clientData.value, firsNme: firstName }
+  firstNameError.value = newValue ? '' : 'El nombre es requerido';
 })
-watch(lastName, () => {
+watch(lastName, (newValue) => {
   clientData.value = { ...clientData.value, lastName }
+  lastNameError.value = newValue ? '' : 'El apellido es requerido';
 })
-watch(email, () => {
+watch(email, (newValue) => {
   clientData.value = { ...clientData.value, email }
+  emailError.value = validateEmail(newValue) ? '' : 'El correo no es válido';
 })
-watch(phone, () => {
+watch(phone, (newValue) => {
   clientData.value = { ...clientData.value, phone }
+  const regex = /^\d{10}$/;
+  phoneError.value = regex.test(newValue) ? '' : 'El teléfono debe tener 10 dígitos';
 })
 </script>
 
@@ -79,7 +67,7 @@ watch(phone, () => {
       <label class="card-input__label">Nombre</label>
       <div class="input-container">
         <i class="fa fa-user"></i>
-        <input v-model="firstName" type="text" class="card-input__input" placeholder="Eduardo de Jesús"
+        <input v-model="firstName" type="text" class="card-input__input" placeholder="Javier"
           @blur="validateFirstName">
         </div>
         <div v-if="firstNameError" class="error">{{ firstNameError }}</div>
