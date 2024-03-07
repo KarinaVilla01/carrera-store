@@ -138,7 +138,6 @@ export default {
           :random-ref="randomRef"
           @move-forward="moveForward"
       />
-      {{selectedOrderType}}
     </div>
     <div id="button-create">
       <button id="buy" @click="toggleMainDrawer">Comprar</button>
