@@ -8,7 +8,15 @@ const firstName = ref("")
 const lastName = ref("")
 const email = ref("")
 const phone = ref("")
+const errors=ref([])
 
+function updateData(){
+  clientData.value={paymentType, location, firstName, lastName, email, phone, errors: !err}
+}
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
 // Mensajes de error
 const firstNameError = ref('');
 const lastNameError = ref('');
@@ -19,41 +27,26 @@ const validateEmail = (email) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
 
+watch(paymentType, updateData)
+watch(location, updateData)
 watch(firstName, (newValue) => {
+  updateData()
   firstNameError.value = newValue ? '' : 'El nombre es requerido';
-});
-
+})
 watch(lastName, (newValue) => {
+  updateData()
   lastNameError.value = newValue ? '' : 'El apellido es requerido';
-});
-
+})
 watch(email, (newValue) => {
+  updateData()
   emailError.value = validateEmail(newValue) ? '' : 'El correo no es válido';
-});
-
+})
 watch(phone, (newValue) => {
+  updateData()
   const regex = /^\d{10}$/;
   phoneError.value = regex.test(newValue) ? '' : 'El teléfono debe tener 10 dígitos';
-});
-
-watch(paymentType, () => {
-  clientData.value = { ...clientData.value, paymentType }
 })
-watch(location, () => {
-  clientData.value = { ...clientData.value, location }
-})
-watch(firstName, () => {
-  clientData.value = { ...clientData.value, firsNme: firstName }
-})
-watch(lastName, () => {
-  clientData.value = { ...clientData.value, lastName }
-})
-watch(email, () => {
-  clientData.value = { ...clientData.value, email }
-})
-watch(phone, () => {
-  clientData.value = { ...clientData.value, phone }
-})
+updateData()
 </script>
 
 <template>
@@ -79,7 +72,7 @@ watch(phone, () => {
       <label class="card-input__label">Nombre</label>
       <div class="input-container">
         <i class="fa fa-user"></i>
-        <input v-model="firstName" type="text" class="card-input__input" placeholder="Eduardo de Jesús"
+        <input v-model="firstName" type="text" class="card-input__input" placeholder="Javier"
           @blur="validateFirstName">
         </div>
         <div v-if="firstNameError" class="error">{{ firstNameError }}</div>

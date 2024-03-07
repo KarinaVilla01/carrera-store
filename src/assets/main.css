@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500,600,700|Source+Sans+Pro:400,600,700&display=swap");
+
 :root {
   --bg-color: #E4F0FE;
   --basic-color: #0166FF;
@@ -185,7 +187,7 @@ ul>li:nth-child(4)>a>div {
   align-items: center;
 }
 
-.checkOut>button:disabled {
+.checkOut>button:disabled , #submit:disabled{
   background-color: var(--light-gray) !important;
 }
 
@@ -315,6 +317,7 @@ div.textConfirmate>h4:nth-child(6) {
 }
 
 .checkOut button,
+#submit,
 .popUp button {
   transition: 0.3s;
   border: none;
@@ -330,7 +333,8 @@ div.textConfirmate>h4:nth-child(6) {
   cursor: pointer;
 }
 
-.checkOut button:nth-of-type(2) {
+.checkOut button:nth-of-type(2),
+#submit{
   background-color: var(--accent-color);
 }
 
@@ -1511,5 +1515,8 @@ body {
     padding: 0 2rem;
   }
 }
+<<<<<<< HEAD
 
 @media (max-width: 991) {}
+=======
+>>>>>>> 282277ecf7ae39dd6f27dcace51188a824a27e1d

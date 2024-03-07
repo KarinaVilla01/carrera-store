@@ -40,6 +40,7 @@ export default {
       if(isMainDrawerActive.value){
         selectedPackage.value=null
         selectedOrderType.value=null
+        clientData.value={}
 
         routerStatus.value=routingStateEnum.selectingOrder
         resetCounter.value++
@@ -53,7 +54,7 @@ export default {
           if(selectedOrderType.value===packageTypeEnum.membresia){
             routerStatus.value=routingStateEnum.membershipWarning
           }else{
-            routerStatus.value=routingStateEnum.paymentSuccess
+            routerStatus.value=routingStateEnum.clientDataForm
           }
           break;
         case routingStateEnum.membershipWarning:
@@ -115,10 +116,10 @@ export default {
           v-show="routerStatus!==routingStateEnum.paymentSuccess && routerStatus!==routingStateEnum.paymentFail"
           :selected-order-type="selectedOrderType || null"
           :selected-package="selectedPackage || null"
+          :client-data="clientData"
           :router-status="routerStatus"
           @move-forward="moveForward"
       />
-{{clientData}}
     </div>
     <div id="button-create">
       <button id="buy" @click="toggleMainDrawer">Comprar</button>
