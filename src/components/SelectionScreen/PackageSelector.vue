@@ -26,5 +26,5 @@ function selectPackage(_package){
 </template>
 
 <style scoped>
-
+@import "../../assets/main.css";
 </style>

@@ -13,7 +13,14 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css:{
+    modules:{
+      localsConvention: "camelCase",
+      generateScopedName: "[name]__[local]__[hash:base64:2]"
     }
   }
 })

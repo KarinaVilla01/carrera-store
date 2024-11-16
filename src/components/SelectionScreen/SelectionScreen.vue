@@ -29,5 +29,5 @@ function onPackageChange(_selectedPackage){
 </template>
 
 <style scoped>
-
+@import "../../assets/main.css";
 </style>

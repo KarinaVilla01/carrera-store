@@ -98,6 +98,7 @@ updateData()
 </template>
 
 <style scoped>
+@import "../../assets/main.css";
 .error {
   color: red;
   font-size: 0.7em;

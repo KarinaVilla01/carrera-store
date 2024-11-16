@@ -1,7 +1,7 @@
 <script setup>
 import packageTypeEnum from "@/constants/packageTypeEnum.js";
 import routingStateEnum from "@/constants/routingStateEnum.js";
-import {ref, watch} from "vue";
+import {nextTick, ref, watch} from "vue";
 
 const props = defineProps(['selectedOrderType', 'selectedPackage', 'routerStatus', 'clientData', 'randomRef'])
 const emit = defineEmits(['moveForward'])
@@ -23,10 +23,30 @@ function updateShowWarning(){
   showWarning.value= props.routerStatus === routingStateEnum.selectingOrder && props.selectedOrderType === packageTypeEnum.membresia
 }
 
-function submitItem(evt){
+async function submitItem(evt){
   evt.preventDefault();
-  emit('moveForward')
-  document.getElementById("submitForm").submit();
+  const body = JSON.stringify({
+    packageId: props.selectedPackage._id,
+    orderType: props.selectedOrderType,
+    cardType: props.clientData.paymentType,
+    location: props.clientData.location,
+    firstName: props.clientData.firstName,
+    lastName: props.clientData.lastName,
+    email: props.clientData.email,
+    phone: props.clientData.phone,
+    ref: props.randomRef
+  })
+  const createdPurchaseOrder=await (await fetch(
+      "https://api.carreracarwash.com/Prosepago/purchase-order",
+      {mode: 'cors',  headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },method:'POST', body})).json()
+  await nextTick(()=>{
+    document.getElementById("submitForm").submit();
+    emit('moveForward')
+  })
+
 }
 
 </script>
@@ -58,11 +78,11 @@ function submitItem(evt){
       <input name="msi_val" id="msi_val" type="hidden" value="0"/>
       <input name="nom" id="nom" type="hidden" :value="`${props.clientData.firstName} ${props.clientData.lastName}`"/>
       <input name="con" id="con" type="hidden" :value="`${props.selectedOrderType === packageTypeEnum.paquete?'Paquete':'Membresia'} ${props.selectedPackage.name}`"/>
-      <input name="ref" id="ref" type="hidden" :value="randomRef"/>
+      <input name="ref" id="ref" type="hidden" :value="props.randomRef"/>
       <input name="imp" id="imp" type="hidden" :value="props.selectedOrderType === packageTypeEnum.paquete? props.selectedPackage.pricePackage:props.selectedPackage.priceMembership"/>
       <input name="ema" id="ema" type="hidden" :value="props.clientData.email"/>
-      <input name="urlok" id="urlOk" type="hidden" value="https://google.com"/>
-      <input name="urlko" id="urlKo" type="hidden" value="https://youtube.com"/>
+      <input name="urlok" id="urlOk" type="hidden" value="https://carreracarwash.com"/>
+      <input name="urlko" id="urlKo" type="hidden" value="https://carreracarwash.com"/>
       <input name="autoBack" id="autoBack" type="hidden" value="1"/>
     </form>
     <button v-if="props.routerStatus === routingStateEnum.clientDataForm"
@@ -73,5 +93,5 @@ function submitItem(evt){
 </template>
 
 <style scoped>
-
+@import "../assets/main.css";
 </style>

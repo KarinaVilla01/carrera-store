@@ -97,7 +97,7 @@ export default {
 </script>
 
 <template>
-  <main>
+  <main id="store-container-main">
     <div :class="{ 'cart-price': true, 'active': isMainDrawerActive }" :key="resetCounter">
       <ShoppingCartHeader :route-status="routerStatus" @close="toggleMainDrawer"/>
       <!--Initiate the routing-->
@@ -117,6 +117,8 @@ export default {
       />
       <WaitingScreen
         v-if="routerStatus===routingStateEnum.waitingOnPayment"
+        @move-forward="moveForward"
+        :random-ref="randomRef"
       />
       <CheckoutScreen
           v-if="routerStatus===routingStateEnum.checkout"
@@ -139,14 +141,15 @@ export default {
           @move-forward="moveForward"
       />
     </div>
-    <div id="button-create">
-      <button id="buy" @click="toggleMainDrawer">Comprar</button>
+    <div id="button-create" class="boton">
+      <button id="buy" class="btn" @click="toggleMainDrawer">Comprar Paquete</button>
     </div>
   </main>
 </template>
 
 
 <style scoped>
+  @import "assets/main.css";
 button:hover {
   transition: 0.3s;
   opacity: 0.8;

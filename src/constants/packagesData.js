@@ -1,11 +1,11 @@
-import img1 from "@/_assets/BackSupremo.png";
-import img5 from "@/_assets/BackSupremoSelect.png";
-import img4 from "@/_assets/BackUltra.png";
-import img6 from "@/_assets/BackUltraSelected.png";
-import img3 from "@/_assets/BackBasico.png";
-import img7 from "@/_assets/BackBasicoSelect.png";
-import img2 from "@/_assets/BackExpress.png";
-import img8 from "@/_assets/BackExpressSelected.png";
+const img1 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackSupremo-zJkQOlSJ.png";
+const img5 ="https://carreracarwash.com/wp-content/uploads/2024/10/BackSupremoSelect-R_mbwh_T.png"
+const img4 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackUltra-Q7T2DTpg.png";
+const img6 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackUltraSelected-NhjOVSgg.png";
+const img3 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackBasico-lPy-tAu7.png";
+const img7 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackBasicoSelect-ahEIBoGE.png";
+const img2 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackExpress-UxZiIZzm.png";
+const img8 = "https://carreracarwash.com/wp-content/uploads/2024/10/BackExpressSelected-kNQeeGZQ.png";
 
 export default [
     {

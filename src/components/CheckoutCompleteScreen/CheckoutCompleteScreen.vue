@@ -25,10 +25,10 @@
 <template>
   <div class="paymentPage">
   <div>
-    <img src="../../_assets/Carrera.png" alt="">
+    <img src="https://carreracarwash.com/wp-content/uploads/2024/10/Carrera-WY806A3z.png" alt="">
   </div>
   <div>
-    <img src="../../_assets/Confirmation Ico.png" alt="">
+    <img src="https://carreracarwash.com/wp-content/uploads/2024/10/Confirmation-Ico-W5bH9hw4.png" alt="">
   </div>
   <h1>${{ calculateTotal() }}.00</h1>
   <h4> ¡Pago Exitoso!</h4>
@@ -47,7 +47,7 @@
         <p>Pagaste a:</p>
         <h4>CARRERA CARWASH</h4>
       </div>
-      <img class="flagsImg" src="../../_assets/flags.png" alt="">
+      <img class="flagsImg" src="https://carreracarwash.com/wp-content/uploads/2024/10/flags-NoGXZzx7.png" alt="">
     </div>
     <div class="seccion1">
       <div>
@@ -60,7 +60,7 @@
       <div>
         <p>Método de pago:</p>
       </div>
-      <img class="flagsImg" src="../../_assets/visa-logo.png" alt="">
+      <img class="flagsImg" src="https://carreracarwash.com/wp-content/uploads/2024/10/visa-logo-i2ck0j2J.png" alt="">
     </div>
     <div class="total">
       <h4>TOTAL: <span>${{ calculateTotal() }}.00</span></h4>
@@ -71,5 +71,5 @@
 </template>
 
 <style scoped>
-
+@import "../../assets/main.css";
 </style>
